@@ -27,12 +27,31 @@ def bissecao(f, xi, xs, tol, max_iter):
 
     return xr, max_iter, abs(f(xr))
 
-def f(x):
+def f1(x):
     return math.cos(x) - x  # Exemplo: f(x) = cos(x) - x
 
-xi, xs = 0, 1
-tol = 1e-5
-max_iter = 100
+def f2(x):
+    return math.log(x)
 
-raiz, iteracoes, erro = bissecao(f, xi, xs, tol, max_iter)
-print(f"Raiz aproximada: {raiz}, Iterações: {iteracoes}, Erro: {erro}")
+if __name__ == "__main__":
+    
+    print("Exemplo 1: f(x) = cos(x) - x")
+    
+    xi, xs = 0, 1
+    tol = 1e-5
+    max_iter = 100
+
+    raiz, iteracoes, erro = bissecao(f1, xi, xs, tol, max_iter)
+    
+    print(f"Raiz aproximada: {raiz}, Iterações: {iteracoes}, Erro: {erro}")
+    
+    print("\nExemplo 2: f(x) = ln(x)")
+    
+    xi, xs = 0.5, 5
+    tol = 1e-3
+    max_iter = 100
+    
+    raiz, iteracoes, erro = bissecao(f2, xi, xs, tol, max_iter)
+    
+    print(f"Raiz aproximada: {raiz}, Iterações: {iteracoes}, Erro: {erro}")
+
