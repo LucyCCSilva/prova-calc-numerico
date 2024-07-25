@@ -55,11 +55,12 @@ def bissecao(f, xi, xs, tol, max_iter):
 def f(x):
     return 3 * x - math.exp(x)
 
-x1 = float(input("Insira o valor para o limite INFERIOR do intervalo: "))
-x2 = float(input("Insira o valor para o limite SUPERIOR do intervalo: "))
-tol = float(input("Insira o valor da TOLERÂNCIA: "))
-max_iter = int(input("Insira o valor MÁXIMO DE INTERAÇÕES: "))
+if __name__ == "__main__":
+    x1 = float(input("Insira o valor para o limite INFERIOR do intervalo: "))
+    x2 = float(input("Insira o valor para o limite SUPERIOR do intervalo: "))
+    tol = float(input("Insira o valor da TOLERÂNCIA: "))
+    max_iter = int(input("Insira o valor MÁXIMO DE INTERAÇÕES: "))
 
-print("\n=============== RESULTADO =================")
-raiz, num_inter, erro = bissecao(f, x1, x2, tol, max_iter)
-print(f"Raiz aproximada: {raiz}\nNúmero de iterações: {num_inter}\nErro: {erro}")
+    print("\n=============== RESULTADO =================")
+    raiz, num_inter, erro = bissecao(f, x1, x2, tol, max_iter)
+    print(f"Raiz aproximada: {raiz}\nNúmero de iterações: {num_inter}\nErro: {erro}")
