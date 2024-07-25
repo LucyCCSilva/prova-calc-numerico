@@ -1,35 +1,58 @@
 import math
 
-def newton_raphson(f, df, x0, tol, max_iter):
-    x = x0
+# Método do Newton-Raphson para encontrar a raiz de f(x).
+def newton_raphson(f, df, raiz, tol, max_iter):
+    """
+    Parâmetros da função:
+        f        -> Função g(x)
+        df       -> Derivada da função f(x)
+        x0       -> 
+        tol      -> Tolerância desejada
+        max_iter -> Número máximo de iterações
+    """
+
+    """
+        O método de Newton-Raphson é utilizado para encontrar as raízes de uma função,, sendo mais eficiente quando a função é diferenciável e estimativa inicial suficientemente próxima da raiz.
+    """
+
+    """
+        Portanto, o primeiro passo para realizar esse método é supor um valor para a raiz
+    """
     for i in range(max_iter):
-        fx = f(x)
-        dfx = df(x)
-        if dfx == 0:
+        """
+            Em seguida, deve-se obter o valor da função e da sua derivada
+        """
+        y = f(raiz)
+        dy = df(raiz)
+        if dy == 0:
             raise ValueError("Derivada igual a zero. O método de Newton-Raphson falhou.")
         
-        x_next = x - fx / dfx
-        if abs(x_next - x) < tol:
-            return x_next, i + 1, abs(x_next - x)
+        """
+            A próxima raiz é dada a partir da fórmula iterativa: x(n+1) = x(n) - f(x(n))/ df(x(n))
+
+            Esse cálculo é repetido até que o erro absoluto entre a raiz recém-calculada e aquela calculada na repetição anterior seja maior que o valor da tolerância
+        """
+        proxima_raiz = raiz - y / dy
+        if abs(proxima_raiz - raiz) < tol:
+            return proxima_raiz, i + 1, abs(proxima_raiz - raiz)
         
-        x = x_next
+        raiz = proxima_raiz
     
-    return x, max_iter, abs(f(x))
+    return raiz, max_iter, abs(f(raiz))
 
-# Exemplo de função f(x) = x^2 - 2 (procurando pela raiz quadrada de 2)
+# Definindo, como exemplo, a função da questão 6
 def f(x):
-    return x**2 - 2
+    return 3 * x - math.exp(x)
 
-# Derivada de f(x), df(x) = 2x
 def df(x):
-    return 2 * x
+    return 3 - math.exp(x)
 
-x0 = 1.0
-tol = 1e-5
-max_iter = 100
-
+raiz = float(input("Insira uma PRIMEIRA SUPOSIÇÃO para a raiz: "))
+tol = float(input("Insira o valor da TOLERÂNCIA: "))
+max_iter = int(input("Insira o valor MÁXIMO DE INTERAÇÕES: "))
+print("\n=============== RESULTADO =================")
 try:
-    raiz, iteracoes, erro = newton_raphson(f, df, x0, tol, max_iter)
-    print(f"Raiz aproximada: {raiz}, Iterações: {iteracoes}, Erro: {erro}")
+    raiz, iteracoes, erro = newton_raphson(f, df, raiz, tol, max_iter)
+    print(f"Raiz aproximada: {raiz}\nIterações: {iteracoes}\nErro: {erro}")
 except ValueError as e:
     print(e)
