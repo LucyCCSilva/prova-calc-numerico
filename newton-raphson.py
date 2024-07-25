@@ -47,12 +47,13 @@ def f(x):
 def df(x):
     return 3 - math.exp(x)
 
-raiz = float(input("Insira uma PRIMEIRA SUPOSIÇÃO para a raiz: "))
-tol = float(input("Insira o valor da TOLERÂNCIA: "))
-max_iter = int(input("Insira o valor MÁXIMO DE INTERAÇÕES: "))
-print("\n=============== RESULTADO =================")
-try:
-    raiz, iteracoes, erro = newton_raphson(f, df, raiz, tol, max_iter)
-    print(f"Raiz aproximada: {raiz}\nIterações: {iteracoes}\nErro: {erro}")
-except ValueError as e:
-    print(e)
+if __name__ == "__main__":
+    raiz = float(input("Insira uma PRIMEIRA SUPOSIÇÃO para a raiz: "))
+    tol = float(input("Insira o valor da TOLERÂNCIA: "))
+    max_iter = int(input("Insira o valor MÁXIMO DE INTERAÇÕES: "))
+    print("\n=============== RESULTADO =================")
+    try:
+        raiz, iteracoes, erro = newton_raphson(f, df, raiz, tol, max_iter)
+        print(f"Raiz aproximada: {raiz}\nIterações: {iteracoes}\nErro: {erro}")
+    except ValueError as e:
+        print(e)

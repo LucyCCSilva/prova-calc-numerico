@@ -38,12 +38,13 @@ def f(x):
 def g(x):
     return math.log(3 * x)
 
-raiz = float(input("Insira uma PRIMEIRA SUPOSIÇÃO para a raiz: "))
-tol = float(input("Insira o valor da TOLERÂNCIA: "))
-max_iter = int(input("Insira o valor MÁXIMO DE INTERAÇÕES: "))
-print("\n=============== RESULTADO =================")
-raiz, max_iter, erro = ponto_fixo(g, raiz, tol, max_iter)
-if raiz is not None:
-    print(f"Raiz aproximada: {raiz}\nNúmero de iterações: {max_iter}\nErro: {erro}")
-else:
-    print("Não foi possível encontrar uma raiz válida.")
+if __name__ == "__main__":
+    raiz = float(input("Insira uma PRIMEIRA SUPOSIÇÃO para a raiz: "))
+    tol = float(input("Insira o valor da TOLERÂNCIA: "))
+    max_iter = int(input("Insira o valor MÁXIMO DE INTERAÇÕES: "))
+    print("\n=============== RESULTADO =================")
+    raiz, max_iter, erro = ponto_fixo(g, raiz, tol, max_iter)
+    if raiz is not None:
+        print(f"Raiz aproximada: {raiz}\nNúmero de iterações: {max_iter}\nErro: {erro}")
+    else:
+        print("Não foi possível encontrar uma raiz válida.")
